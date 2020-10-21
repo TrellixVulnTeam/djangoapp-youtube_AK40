@@ -1,0 +1,46 @@
+{% extends "register/base.html" %}
+
+{% block content %}
+{% load static %}
+<head>
+  <title>Image Downloader</title>
+  <link rel="stylesheet" href="{% static '/register/css/particles.css' %}"> 
+  <script type="text/javascript" src="{% static '/register/js/particles.js' %}"></script>
+  <canvas class="background"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+
+  
+</head>
+
+<body>
+
+
+  
+  <div class="container">
+    <div class="box">
+      <h1>YoutubeチャンネルIDを入力することで動画情報をCSV形式でdownloadします。</h1>
+      <h2>
+    <form method="POST" id="form">
+      {% csrf_token %}
+      {{ form.management_form }}
+      <div class="text">
+          {{ form.empty_form.as_p }}
+      </div>
+      <form action="/" method="post">
+        {% csrf_token %}
+        <div>
+          <label for="url">Input URL</label>
+          <input type="text" id="url" name="url" value="{{ URL }}">
+        <button type="submit">Run</button>
+      </div>
+      </form>
+
+    </form>
+  </h2>
+  </div>
+  </div>
+
+
+</body>
+
+{% endblock %}

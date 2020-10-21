@@ -1,0 +1,4 @@
+{% for uploadfile in uploadfile_list %}
+<a href="{{ uploadfile.file.url }}">{{ uploadfile }}</a>
+<hr>
+{% endfor %}
